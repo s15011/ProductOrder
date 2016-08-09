@@ -47,6 +47,7 @@ public class ProductView extends AppCompatActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(
                 LAYOUT_INFLATER_SERVICE);
         final View layout = inflater.inflate(R.layout.dialog1,
@@ -54,30 +55,22 @@ public class ProductView extends AppCompatActivity implements View.OnClickListen
 
         // アラーとダイアログ を生成
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("ダイアログタイトル");
+        builder.setTitle("ログイン");
         builder.setView(layout);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // OK ボタンクリック処理
-                // ID と PASSWORD を取得
-                EditText id
-                        = (EditText)layout.findViewById(R.id.customDlg_id);
-                EditText pass
-                        = (EditText)layout.findViewById(R.id.customDlg_pass);
-                String strId   = id.getText().toString();
-                String strPass = pass.getText().toString();
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // Cancel ボタンクリック処理
-            }
-        });
+
+
         builder.create().show();
 
+        Button btn1 =(Button)findViewById(R.id.optCreateAccount);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("YOGI", "GIYO");
+
+            }
+        });
 
 
-        super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_CONTEXT_MENU);
         setContentView(R.layout.activity_product_view);
         Button btn = (Button)findViewById(R.id.btnTransition);
@@ -87,7 +80,7 @@ public class ProductView extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(this, MainActivity.class);//
+        Intent i = new Intent(this, MainActivity.class);//OrderCheckに移動
         startActivity(i);
 
     }
