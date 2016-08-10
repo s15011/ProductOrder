@@ -18,11 +18,11 @@ public class CreateDatebase extends SQLiteOpenHelper {
 
     private static final String sql_CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + "(" +
-                    AccountColumns.FirstName + " TEXT," +
                     AccountColumns.LastName + " TEXT," +
+                    AccountColumns.FirstName + " TEXT," +
+                    AccountColumns.MailAddress + " TEXT primary key," +
                     AccountColumns.PrefectureId + " TEXT," +
                     AccountColumns.Address + " TEXT," +
-                    AccountColumns.MailAddress + " TEXT primary key," +
                     AccountColumns.Password + " TEXT)";
 
     public interface AccountColumns extends BaseColumns {
@@ -42,7 +42,7 @@ public class CreateDatebase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(sql_CREATE_TABLE);
-        Log.d("log", "log");
+        Log.d("nakanisi", "osamu");
     }
 
     @Override

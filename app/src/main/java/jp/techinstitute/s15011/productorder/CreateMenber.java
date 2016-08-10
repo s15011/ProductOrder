@@ -47,11 +47,11 @@ public class CreateMenber extends AppCompatActivity {
                 TextView Mail = (TextView)findViewById(R.id.editMail);
                 account.mailaddress = Mail.getText().toString();
 
-                TextView Home_Adress = (TextView)findViewById(R.id.editAdress);
-                account.address = Home_Adress.getText().toString();
+                TextView Home_Address = (TextView)findViewById(R.id.editAddress);
+                account.address = Home_Address.getText().toString();
 
                 TextView Password = (TextView)findViewById(R.id.editPassword);
-                String password = Password.getText().toString();
+                account.password = Password.getText().toString();
 
                 TextView Confirm_Password = (TextView)findViewById(R.id.Confirm_Password);
                 String confirm_password = Confirm_Password.getText().toString();
@@ -63,6 +63,8 @@ public class CreateMenber extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(CreateMenber.this);
 
+                Log.d("NOW", "address : " + account.address.toString());
+                Log.d("NOW", "err : " + err);
                 if(account.last_name.equals(err)){
                     alertDialog.setMessage("未入力の項目があります");
                 }else if(account.first_name.equals(err)){
@@ -71,11 +73,11 @@ public class CreateMenber extends AppCompatActivity {
                     alertDialog.setMessage("未入力の項目があります");
                 }else if(account.address.equals(err)){
                     alertDialog.setMessage("未入力の項目があります");
-                }else if(password.equals(err)){
+                }else if(account.password.equals(err)){
                     alertDialog.setMessage("未入力の項目があります");
                 }else if(confirm_password.equals(err)){
                     alertDialog.setMessage("未入力の項目があります");
-                } else if(!password.equals(confirm_password)){
+                } else if(!account.password.equals(confirm_password)){
                     alertDialog.setMessage("パスワードが一致していません");
                 }else {
                     alertDialog.setTitle("以下の内容でよろしいですか?");
