@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="jp.techinstitute.s15011.productorder.ProductView">
+
+    <item
+        android:id="@+id/optLogout"
+        android:title="ログアウト"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource" />
+    <item
+        android:id="@+id/optChengeAccontInfo"
+        android:title="アカウントの変更"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource" />
+    <item
+        android:id="@+id/optDeleateAccount"
+        android:title="アカウントの削除"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource" />
+    <item
+        android:id="@+id/optOrderCancel"
+        android:title="注文のキャンセル"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource" />
+
+
+
+</menu>
