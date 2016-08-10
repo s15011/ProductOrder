@@ -35,7 +35,7 @@ public class CreateMenber extends AppCompatActivity {
             public void onClick(View view) {
                 String err = "";
 
-                CreateMenberStr account = new CreateMenberStr();
+                final CreateMenberStr account = new CreateMenberStr();
 
                 TextView Last_name = (TextView)findViewById(R.id.editLastName);
                 account.last_name = Last_name.getText().toString();
@@ -87,7 +87,7 @@ public class CreateMenber extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
+                            insertMenber(account);
                         }
                     });
                     alertDialog.setNegativeButton("CANCEL", null);
