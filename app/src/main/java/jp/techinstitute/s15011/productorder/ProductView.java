@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class ProductView extends AppCompatActivity implements View.OnClickListener {
+public class ProductView extends AppCompatActivity  {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,36 +52,39 @@ public class ProductView extends AppCompatActivity implements View.OnClickListen
                 LAYOUT_INFLATER_SERVICE);
         final View layout = inflater.inflate(R.layout.dialog1,
                 (ViewGroup)findViewById(R.id.layout_root));
+        setContentView(R.layout.activity_product_view);
 
         // アラーとダイアログ を生成
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("ログイン");
         builder.setView(layout);
-
-
         builder.create().show();
 
-        Button btn1 =(Button)findViewById(R.id.optCreateAccount);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        Button btn = (Button)layout.findViewById(R.id.optCreateAccount);
+        btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Log.d("YOGI", "GIYO");
+                CreateAccount();
+
 
             }
         });
-
-
-        //requestWindowFeature(Window.FEATURE_CONTEXT_MENU);
-        setContentView(R.layout.activity_product_view);
-        Button btn = (Button)findViewById(R.id.btnTransition);
-        btn.setOnClickListener(this);
+        Button btn1 = (Button)layout.findViewById(R.id.optLogin);
+        btn1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
+    }
+    public void login() {
+        //ログインの処理
 
     }
-
-    @Override
-    public void onClick(View view) {
-        Intent i = new Intent(this, MainActivity.class);//OrderCheckに移動
+    public void CreateAccount() {
+        Intent i = new Intent(this, CreateMenber.class);
+        Log.d("YOGI", "Create");
         startActivity(i);
 
     }
+
 }
