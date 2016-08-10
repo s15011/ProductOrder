@@ -6,39 +6,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_product_view);
 
-        Button btn = (Button)findViewById(R.id.btnEntry);
-        btn.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CreateMenber.class);
-                startActivity(intent);
-            }
-        }));
+        Button btn = (Button)findViewById(R.id.button);
+        btn.setOnClickListener(this);
 
-
-/*
-        Button btn = (Button)findViewById(R.id.btnEntry);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_create_menber);
-                //startActivity(new Intent(this, ));
-            }
-        });
-
-        Button btn2 = (Button)findViewById(R.id.btn2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_chenge_menber_info);
-            }
-        });*/
     }
+
+    @Override
+    public void onClick(View view) {
+        Intent i = new Intent(this, ProductView.class);
+        startActivity(i);
+
+    }
+
+
 }

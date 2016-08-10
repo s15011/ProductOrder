@@ -2,6 +2,7 @@ package jp.techinstitute.s15011.productorder;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
@@ -90,6 +91,7 @@ public class CreateMenber extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             insertMenber(account);
+                            chengeactivity();
                         }
                     });
                     alertDialog.setNegativeButton("CANCEL", null);
@@ -97,9 +99,13 @@ public class CreateMenber extends AppCompatActivity {
                 alertDialog.create().show();
             }
         });
-
-
     }
+
+    private void chengeactivity(){
+        Intent intent = new Intent(this, ProductView.class);
+        startActivity(intent);
+    }
+
     private class CreateMenberStr{
         String first_name;
         String last_name;
