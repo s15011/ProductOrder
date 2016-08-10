@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 /**
  * Created by s15011 on 16/08/04.
@@ -16,13 +17,13 @@ public class CreateDatebase extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "Account";
 
     private static final String sql_CREATE_TABLE =
-            "CREATE_TABLE " + TABLE_NAME + "(" +
-                    AccountColumns.FirstName + "TEXT," +
-                    AccountColumns.LastName + "TEXT," +
-                    AccountColumns.PrefectureId + "TEXT," +
-                    AccountColumns.Address + "TEXT," +
-                    AccountColumns.MailAddress + "TEXT,primary key," +
-                    AccountColumns.Password + "TEXT)";
+            "CREATE TABLE " + TABLE_NAME + "(" +
+                    AccountColumns.LastName + " TEXT," +
+                    AccountColumns.FirstName + " TEXT," +
+                    AccountColumns.MailAddress + " TEXT primary key," +
+                    AccountColumns.PrefectureId + " TEXT," +
+                    AccountColumns.Address + " TEXT," +
+                    AccountColumns.Password + " TEXT)";
 
     public interface AccountColumns extends BaseColumns {
         public static final String FirstName = "FirstName";
@@ -35,11 +36,13 @@ public class CreateDatebase extends SQLiteOpenHelper {
 
     public CreateDatebase(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        Log.d("nakanisi", "osamu");
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(sql_CREATE_TABLE);
+        Log.d("nakanisi", "osamu");
     }
 
     @Override
