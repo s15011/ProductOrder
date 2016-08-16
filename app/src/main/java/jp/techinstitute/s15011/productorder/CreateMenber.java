@@ -34,13 +34,12 @@ public class CreateMenber extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String err = "";
+                final String err = "";
 
                 final CreateMenberStr account = new CreateMenberStr();
 
                 TextView Last_name = (TextView)findViewById(R.id.editLastName);
                 account.last_name = Last_name.getText().toString();
-                //Log.d("aaaa", last_name);
 
                 TextView First_name = (TextView)findViewById(R.id.editFirstName);
                 account.first_name = First_name.getText().toString();
@@ -59,10 +58,9 @@ public class CreateMenber extends AppCompatActivity {
 
                 Spinner spinner = (Spinner) findViewById(R.id.spinner);
                 account.prefectureid = spinner.getSelectedItem().toString();
-                //Log.d("aaaa", item);
 
 
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(CreateMenber.this);
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(CreateMenber.this);
 
                 Log.d("NOW", "address : " + account.address.toString());
                 Log.d("NOW", "err : " + err);
@@ -90,8 +88,15 @@ public class CreateMenber extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            insertMenber(account);
-                            chengeactivity();
+
+                            String err_msg = insertMenber(account);
+                            if(err_msg.equals("")){
+                                chengeactivity();
+                            }else  {
+                                alertDialog.setMessage("アドレス被ってる");
+                                alertDialog.create().show();
+                            }
+
                         }
                     });
                     alertDialog.setNegativeButton("CANCEL", null);
@@ -119,8 +124,7 @@ public class CreateMenber extends AppCompatActivity {
         String err_msg = "";
 
         //SQLiteDatabaseオブジェクト取得
-        SQLiteDatabase db_q = createDatebase.getWritableDatabase();
-
+        SQLiteDatabase db_q = createDatebase.getReadableDatabase();
 
         // queryを呼び、検索を行う
         String where = CreateDatebase.AccountColumns.MailAddress + "=?";
