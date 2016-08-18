@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/editAdress"
-        android:layout_alignStart="@+id/editAdress"
+        android:layout_alignLeft="@+id/editAddress"
+        android:layout_alignStart="@+id/editAddress"
         android:spinnerMode="dialog"
         android:entries="@array/spinner_list"
         />
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
-        android:id="@+id/editAdress"
+        android:id="@+id/editAddress"
         android:layout_above="@+id/textView6"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

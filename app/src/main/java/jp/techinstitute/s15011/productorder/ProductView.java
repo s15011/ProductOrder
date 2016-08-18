@@ -95,7 +95,6 @@ public class ProductView extends AppCompatActivity  {
             public void onClick(View view) {
                 CreateAccount();
 
-
             }
         });
         Button btn1 = (Button)layout.findViewById(R.id.optLogin);
