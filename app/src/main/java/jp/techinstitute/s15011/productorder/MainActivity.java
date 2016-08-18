@@ -1,6 +1,9 @@
 package jp.techinstitute.s15011.productorder;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,12 +13,34 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    static MyHelper myHelper;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_cancel);
+        setContentView(R.layout.activity_order_check);
+
+        SQLiteDatabase db = myHelper.getReadableDatabase();
+
+
+        Cursor cursor = db.query(
+                "list_table", new String[] {"_id", "data"},
+                null, null, null, null, "_id DESC");
+
+        if(!cursor.moveToFirst()){
+            cursor.close();
+            db.close();
+            return;
+        }
+
+        int ProductId = cursor.getColumnIndex(MyHelper.Columns.ID);
+        int ProductName = cursor.getColumnIndex(MyHelper.Columns.productName);
+        int ProductPrice = cursor.getColumnIndex(MyHelper.Columns.PRICE);
+        int ProductStock = cursor.getColumnIndex(MyHelper.Columns.STOCK);
+
+        
+
 
         Button btn = (Button) findViewById(R.id.btnBuy);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -127,17 +152,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        // データベースヘルパーのインスタンス生成
-        MyHelper dbHelper = new MyHelper(getApplicationContext());
-
-        // データベースのオープン（ここでDBとテーブルが作成される）
-        dbHelper.openWrite();
-        dbHelper.close();
-    }
 
 }
