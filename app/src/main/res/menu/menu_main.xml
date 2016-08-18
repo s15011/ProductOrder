@@ -11,7 +11,7 @@
         tools:ignore="AppCompatResource" />
     <item
         android:id="@+id/optChengeAccontInfo"
-        android:title="アカウントの変更"
+        android:title="アカウント情報の変更"
         android:orderInCategory="100"
         android:showAsAction="always"
         tools:ignore="AppCompatResource" />
