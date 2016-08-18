@@ -14,16 +14,19 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
 public class CreateMenber extends AppCompatActivity {
 
-    private CreateDatebase createDatebase;
+    //private MyHelper createDatebase;
+    private MyHelper myHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        createDatebase = new CreateDatebase(this);
-
+        //createDatebase = new CreateDatebase(this);
+        //myHelper = MyHelper.getInstance(this);
+        myHelper = new MyHelper(this);
 
 
         setContentView(R.layout.activity_create_menber);
@@ -124,13 +127,13 @@ public class CreateMenber extends AppCompatActivity {
         String err_msg = "";
 
         //SQLiteDatabaseオブジェクト取得
-        SQLiteDatabase db_q = createDatebase.getReadableDatabase();
+        SQLiteDatabase db_q = myHelper.getReadableDatabase();
 
         // queryを呼び、検索を行う
-        String where = CreateDatebase.AccountColumns.MailAddress + "=?";
+        String where = MyHelper.AccountColumns.mailAddress + "=?";
         String[] args = {item.mailaddress};
         Cursor cursor = db_q.query(
-                CreateDatebase.TABLE_NAME, null, where, args, null, null, null);
+                MyHelper.ACCOUNT_TABLE_NAME, null, where, args, null, null, null);
 
 
         //読込位置を先頭にする。trueの場合は結果1件以上
@@ -144,20 +147,21 @@ public class CreateMenber extends AppCompatActivity {
             db_q.close();
         }
 
-        SQLiteDatabase db = createDatebase.getWritableDatabase();
+        SQLiteDatabase db = myHelper.getWritableDatabase();
 
         //列に対応する値をセット
         ContentValues values = new ContentValues();
 
-        values.put(CreateDatebase.AccountColumns.FirstName, item.first_name);
-        values.put(CreateDatebase.AccountColumns.LastName, item.last_name);
-        values.put(CreateDatebase.AccountColumns.PrefectureId, item.prefectureid);
-        values.put(CreateDatebase.AccountColumns.Address, item.address);
-        values.put(CreateDatebase.AccountColumns.MailAddress, item.mailaddress);
-        values.put(CreateDatebase.AccountColumns.Password, item.password);
+        values.put(MyHelper.AccountColumns.firstName, item.first_name);
+        values.put(MyHelper.AccountColumns.lastName, item.last_name);
+        values.put(MyHelper.AccountColumns.prefectureId, item.prefectureid);
+        values.put(MyHelper.AccountColumns.address, item.address);
+        values.put(MyHelper.AccountColumns.mailAddress, item.mailaddress);
+        values.put(MyHelper.AccountColumns.password, item.password);
+        Log.d("la", "la");
 
         // データベースに行を追加する
-        long id = db.insert(CreateDatebase.TABLE_NAME, null, values);
+        long id = db.insert(MyHelper.TABLE_NAME, null, values);
         if (id == -1) {
             Log.d("Database", "行の追加に失敗");
         }
