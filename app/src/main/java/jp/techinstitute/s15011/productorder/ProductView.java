@@ -1,5 +1,7 @@
 package jp.techinstitute.s15011.productorder;
 
+import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +13,51 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ProductView extends AppCompatActivity  {
+    private ItemAdapter adapter;
+    private ItemAdapter adapter2;
+
+    private class ProductItem {
+        int _id;
+        String id;
+        String name;
+        int price;
+        int stock;
+    }
+
+    private class ItemAdapter extends ArrayAdapter<ProductItem>{
+        private LayoutInflater inflater;
+
+        public ItemAdapter(Context context, int resouce,
+                           List<ProductItem> objects){
+            super(context, resouce, objects);
+            inflater =
+                    (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            Log.d("ProductList", "getView");
+
+            View view = inflater.inflate(R.layout.list_layout, null, false);
+            TextView nameView = (TextView)view.findViewById(R.id.textView23);
+            ProductItem item = getItem(position);
+            nameView.setText(item.name);
+            return  view;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,6 +77,10 @@ public class ProductView extends AppCompatActivity  {
         if  (id == R.id.optLogout) {//ログアウトの処理
 
         }else if(id == R.id.optChengeAccontInfo) {//ChangeMenberinfoに飛ぶ
+            //Intent i = new Intent(this, .class);
+            //startActivity(i);
+
+
 
         }else if(id == R.id.optDeleateAccount) {//アカウント削除の処理
             LayoutInflater inflater = (LayoutInflater)this.getSystemService(
@@ -84,9 +131,43 @@ public class ProductView extends AppCompatActivity  {
                 (ViewGroup)findViewById(R.id.layout_root));
         setContentView(R.layout.activity_product_view);
 
+
+        //listの作成
+        List<ProductItem> list = new ArrayList<ProductItem>();
+        //listに仮のデータを入れる
+        ProductItem item = new ProductItem();
+        item.name = "mezumi";
+        list.add(item);
+        item = new ProductItem();
+        item.name = "usi";
+        list.add(item);
+        item = new ProductItem();
+        item.name = "tora";
+        list.add(item);
+
+        /*
+        list.add("うし");
+        list.add("とら");
+        list.add("うさぎ");
+        */
+
+        //Adapterの作成
+        adapter = new ItemAdapter(this, 0, list);
+        //
+        adapter2 = new ItemAdapter(this, 0, list);
+
+        //listviewにAdapterを関連付ける
+        ListView listView = (ListView) findViewById(R.id.listProducts1);
+        listView.setAdapter(adapter);
+
+        ListView listView2 = (ListView) findViewById(R.id.listProducts2);
+        listView2.setAdapter(adapter2);
+
+
         // アラーとダイアログ を生成
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(layout);
+        //.setCanceledOnTouchOutside(false);
         builder.create().show();
 
         Button btn = (Button)layout.findViewById(R.id.optCreateAccount);
