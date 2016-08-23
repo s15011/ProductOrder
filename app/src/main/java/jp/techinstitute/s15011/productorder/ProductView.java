@@ -164,7 +164,7 @@ public class ProductView extends AppCompatActivity  {
         listView2.setAdapter(adapter2);
 
 
-        // アラーとダイアログ を生成
+        // アラーとダイアログ を生成a
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(layout);
         //.setCanceledOnTouchOutside(false);
