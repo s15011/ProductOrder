@@ -81,7 +81,7 @@ import android.util.Log;
 		/**
 		 * コンストラクタ
 		 */
-		private MyHelper(Context context) {
+		public MyHelper(Context context) {
 			super(context, DB_NAME, null, DB_VERSION);
 
 			Log.d("MyHelper", "MyHelper");
