@@ -80,12 +80,8 @@ import android.util.Log;
 
 		/**
 		 * コンストラクタ
-<<<<<<< HEAD
 		 */
 		public MyHelper(Context context) {
-=======
-		 */public  MyHelper(Context context) {
->>>>>>> remotes/upstream/master
 			super(context, DB_NAME, null, DB_VERSION);
 
 			Log.d("MyHelper", "MyHelper");
@@ -106,6 +102,8 @@ import android.util.Log;
 
 			//initTable();
 			// table row insert
+
+
 			db.execSQL("insert into CodeM(CodeId,Code,Name) values (1, 1, '北海道');");
 			db.execSQL("insert into CodeM(CodeId,Code,Name) values (1, 2, '青森');");
 			db.execSQL("insert into CodeM(CodeId,Code,Name) values (1, 3, '岩手');");
@@ -156,10 +154,10 @@ import android.util.Log;
 			db.execSQL("insert into CodeM(CodeId,Code,Name) values (2, 1, '30');");
 
 
-			db.execSQL("insert into Columns(id,name,price,stock) values ('1','赤鉛筆', 60, 50)");
-			db.execSQL("insert into Columns(ID,productName,PRICE,STOCK,PREFECTURE) values ('2','本', 980, 50, 2)");
-			db.execSQL("insert into Columns(ID,productName,PRICE,STOCK,PREFECTURE) values ('3','ノート', 120, 50, 3)");
-			db.execSQL("insert into Columns(ID,productName,PRICE,STOCK,PREFECTURE) values ('4','筆箱', 1200, 50, 4)");
+			db.execSQL("insert into Columns(id,name,price,stock,PREFECTURE) values ('1','赤鉛筆', 60, 50)");
+			db.execSQL("insert into Columns(ID,name,PRICE,STOCK,PREFECTURE) values ('2','本', 980, 50, 2)");
+			db.execSQL("insert into Columns(ID,name,PRICE,STOCK,PREFECTURE) values ('3','ノート', 120, 50, 3)");
+			db.execSQL("insert into Columns(ID,name,PRICE,STOCK,PREFECTURE) values ('4','筆箱', 1200, 50, 4)");
 
 		}
 
