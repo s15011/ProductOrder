@@ -31,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
 		String[] list = new String[10]; //{"", ""};
 		list[0] = "";
 		list[1] = "";
-		String[] columns = {MyHelper.Columns.productName,  };
+		list[2] = "";
+		list[3] = "";
+		list[4] = "";
+
+		String[] columns = {MyHelper.Columns.productName,MyHelper.Columns.PRICE,MyHelper.Columns.STOCK,MyHelper.Columns.productName  };
 
 		//String[] columns = new String[]{"id","name" };
 		Cursor cursor = db.query(MyHelper.TABLE_NAME, columns, null, null, null, null, null);
@@ -41,25 +45,85 @@ public class MainActivity extends AppCompatActivity {
 			//test += String.format("%s : %s円\r\n",cursor.getString(0),cursor.getString(1));
 		    list[0] += String.format("%s  \r\n" ,cursor.getString(0));
 
+
 			cursor.moveToNext();
 			list[1] += String.format("%s \r\n" , cursor.getString(0));
-			cursor.moveToLast();
+
+			cursor.moveToNext();
+			list[2] += String.format("%s \r\n", cursor.getString(0));
+
+
+			cursor.moveToNext();
+			list[3] += String.format("%s \r\n", cursor.getString(0));
+
+			list[4] += String.format("%s \r\n", cursor.getString(1));
+
 		}
 
+		db.close();
 
 
+        //製品の名前表示
 		TextView editView = (TextView) findViewById(R.id.textView4);
 		editView.setText(list[0]);
 
 		TextView editView2 = (TextView) findViewById(R.id.textView6);
 		editView2.setText(list[1]);
 
+		TextView editView3 = (TextView) findViewById(R.id.textView8);
+		editView3.setText(list[2]);
+
+		TextView editView4 = (TextView) findViewById(R.id.textView10);
+		editView4.setText(list[3]);
+
+		TextView editView5 = (TextView) findViewById(R.id.textView5);
+		editView5.setText(list[4]);
+
+
+
+
+
+
+		/*Button btn = (Button) findViewById(R.id.btnBuy);
+        btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				MyHelper myHelper = new MyHelper(MainActivity.this);
+				SQLiteDatabase db = myHelper.getWritableDatabase();
+
+				String[] columns = {MyHelper.Columns.STOCK,  };
+				String[] list = new String[10]; //{"", ""};
+				list[0] = "";
+				list[1] = "";
+				list[2] = "";
+				list[3] = "";
+
+				Cursor cursor = db.query(MyHelper.TABLE_NAME, columns, null, null, null, null, null);
+				StringBuilder text = new StringBuilder();
+
+
+				while (cursor.moveToNext()) {
+
+					 list[0] += String.format("%s  \r\n" ,cursor.getString(0));
+
+
+				}
+
+
+
+			}
+		});*/
 
 
 	}
 
 
-	}
+
+
+
+
+
+}
 
 
 
