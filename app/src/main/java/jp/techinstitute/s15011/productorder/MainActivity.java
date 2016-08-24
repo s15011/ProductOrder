@@ -11,106 +11,58 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.List;
+
+import static android.widget.TextView.*;
+
 
 
 public class MainActivity extends AppCompatActivity {
-
-
-	private class ProductItem {
-		int _id;
-		String id;
-		String name;
-		int price;
-		int stock;
-		String prefecture;
-		boolean flag;
-
-		void setCheckFlag(boolean checkflg) {
-			this.flag = checkflg;
-		}
-
-		boolean getCheckFlag() {
-			return flag;
-		}
-	}
-
-	private List<ProductItem> itemList;
-
-
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    @Override
+	protected  void  onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_check);
 
 		MyHelper myHelper = new MyHelper(this);
 		SQLiteDatabase db = myHelper.getWritableDatabase();
 
-		//Cursor cursor = db.query("Columns", new String[]{"id", "name"},null,
-		//      null, null, null, null);
+		//String test = "";
+		String[] list = new String[10]; //{"", ""};
+		list[0] = "";
+		list[1] = "";
+		String[] columns = {MyHelper.Columns.productName,  };
 
+		//String[] columns = new String[]{"id","name" };
+		Cursor cursor = db.query(MyHelper.TABLE_NAME, columns, null, null, null, null, null);
+		StringBuilder text = new StringBuilder();
+		//Log.e("col :", String.valueOf(cursor.getColumnCount()));
+		while (cursor.moveToNext()) {
+			//test += String.format("%s : %s円\r\n",cursor.getString(0),cursor.getString(1));
+		    list[0] += String.format("%s  \r\n" ,cursor.getString(0));
 
-		//Cursor cursor = db.query(MyHelper.TABLE_NAME, null, null,null, null, null, null);
-
-		String text = "";
-		String colm = MyHelper.Columns.ID;
-		Cursor cursor = db.query(MyHelper.TABLE_NAME, new String[]{"id"},
-				null, null, null, null, "id DESC");
-		if (!cursor.moveToFirst()) {
-			cursor.close();
-			db.close();
-			return;
-		}
-		int _idIndex = cursor.getColumnIndex(MyHelper.Columns._ID);
-		int idindex = cursor.getColumnIndex(String.valueOf(MyHelper.Columns.ID));
-		int nameindex = cursor.getColumnIndex(MyHelper.Columns.productName);
-		int priceindex = cursor.getColumnIndex(MyHelper.Columns.PRICE);
-		int stockindex = cursor.getColumnIndex(MyHelper.Columns.STOCK);
-		int prefectureindex = cursor.getColumnIndex(MyHelper.Columns.PREFECTURE);
-
-
-		itemList.removeAll(itemList);
-		do {
-			ProductItem item = new ProductItem();
-			item._id = cursor.getInt(_idIndex);
-			item.id = cursor.getString(idindex);
-			item.name = cursor.getString(nameindex);
-			item.price = cursor.getInt(priceindex);
-			item.stock = cursor.getInt(stockindex);
-			item.prefecture = cursor.getString(prefectureindex);
-
-			itemList.add(item);
-
-		} while (cursor.moveToNext());
-
-		Cursor c = db.query(MyHelper.ACCOUNT_TABLE_NAME, new String[]{
-				MyHelper.AccountColumns.firstName,
-				MyHelper.AccountColumns.lastName,
-				MyHelper.AccountColumns.prefectureId,
-				MyHelper.AccountColumns.address,
-				MyHelper.AccountColumns.mailAddress,
-				MyHelper.AccountColumns.password
-		}, null, null, null, null, null);
-
-		if (!cursor.moveToFirst()) {
-			cursor.close();
-			db.close();
-			return;
+			cursor.moveToNext();
+			list[1] += String.format("%s \r\n" , cursor.getString(0));
+			cursor.moveToLast();
 		}
 
 
-			TextView textView1 = (TextView) findViewById(R.id.textView4);
-			textView1.setText(text);
-			if (!cursor.moveToFirst()) {
-				cursor.close();
-				db.close();
-				return;
-			}
+
+		TextView editView = (TextView) findViewById(R.id.textView4);
+		editView.setText(list[0]);
+
+		TextView editView2 = (TextView) findViewById(R.id.textView6);
+		editView2.setText(list[1]);
+
 
 
 	}
-}
+
+
+	}
+
+
+
 
 
 
