@@ -8,21 +8,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ProductView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".OrderCheck">
+        <!--<activity android:name=".CreateMenber"></activity>-->
+        <!--<activity android:name=".OrderCheck">
         </activity>
         <activity
             android:name=".Confirm_Activity"
             android:label="@string/app_name">
         </activity>
         <activity android:name=".OrderCancel">
-        </activity>
+        </activity>-->
+        <activity android:name=".CreateMenber"></activity>
+        <activity android:name=".ChengeMenberInfo"></activity>
     </application>
 
 </manifest>
