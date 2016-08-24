@@ -25,13 +25,13 @@ import android.util.Log;
 						Columns.productName + " TEXT," +
 						Columns.PRICE + " INTEGER," +
 						Columns.STOCK + " INTEGER," +
-						Columns.PREFECTURE + " INTEGER);";
+						Columns.PREFECTURE + " TEXT);";
 
 		private static final String CREATE_TABLE_ACCOUNT =
 				"CREATE TABLE " + ACCOUNT_TABLE_NAME + "(" +
 						AccountColumns.firstName + " TEXT," +
 						AccountColumns.lastName + " TEXT," +
-						AccountColumns.prefectureId + " INTEGER," +
+						AccountColumns.prefectureId + " TEXT," +
 						AccountColumns.address + " TEXT," +
 						AccountColumns.mailAddress + " TEXT primary key," +
 						AccountColumns.password + " TEXT);";
@@ -99,6 +99,7 @@ import android.util.Log;
 			db.execSQL(SQL_CREATE_TABLE);
 			db.execSQL(CREATE_TABLE_ACCOUNT);
 
+
 			//initTable();
 			// table row insert
 			db.execSQL("insert into CodeM(CodeId,Code,Name) values (1, 1, '北海道');");
@@ -151,10 +152,10 @@ import android.util.Log;
 			db.execSQL("insert into CodeM(CodeId,Code,Name) values (2, 1, '30');");
 
 
-			db.execSQL("insert into Columns(id,name,price,stock) values ('1','赤鉛筆', 60, 50)");
-			db.execSQL("insert into Columns(ID,productName,PRICE,STOCK,PREFECTURE) values ('2','本', 980, 50, 2)");
-			db.execSQL("insert into Columns(ID,productName,PRICE,STOCK,PREFECTURE) values ('3','ノート', 120, 50, 3)");
-			db.execSQL("insert into Columns(ID,productName,PRICE,STOCK,PREFECTURE) values ('4','筆箱', 1200, 50, 4)");
+			db.execSQL("insert into products(id,name,price,stock) values ('1','赤鉛筆', 60, 50)");
+			db.execSQL("insert into products(ID,name,PRICE,STOCK,PREFECTURE) values ('2','本', 980, 50, 2)");
+			db.execSQL("insert into products(ID,name,PRICE,STOCK,PREFECTURE) values ('3','ノート', 120, 50, 3)");
+			db.execSQL("insert into products(ID,name,PRICE,STOCK,PREFECTURE) values ('4','筆箱', 1200, 50, 4)");
 
 		}
 
