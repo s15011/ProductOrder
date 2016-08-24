@@ -57,7 +57,7 @@ public class ChengeMenberInfo extends AppCompatActivity {
                 account.password = Password.getText().toString();
                 String confirm_password = Confirm_Password.getText().toString();
                 account.prefectureId = spinner.getSelectedItem().toString();
-                Log.d("kkkkkkkkkkkkkkk", "qqqqqqqqqqqqqqqqqqqqqqqqq");
+                //Log.d("kkkkkkkkkkkkkkk", "qqqqqqqqqqqqqqqqqqqqqqqqq");
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ChengeMenberInfo.this);
 
@@ -152,15 +152,15 @@ public class ChengeMenberInfo extends AppCompatActivity {
 
         ContentValues values = new ContentValues();
         values.put(MyHelper.AccountColumns.lastName,Accountdata.last_name);
-        Log.d("aaaa", "aaaa");
+        //Log.d("aaaa", "aaaa");
         values.put(MyHelper.AccountColumns.firstName,Accountdata.first_name);
-        Log.d("iiii", "iiii");
+        //Log.d("iiii", "iiii");
         values.put(MyHelper.AccountColumns.prefectureId,Accountdata.prefectureId);
-        Log.d("uuuu", "uuuu");
+        //Log.d("uuuu", "uuuu");
         values.put(MyHelper.AccountColumns.address,Accountdata.address);
-        Log.d("eeee", "uuuu");
+        //Log.d("eeee", "uuuu");
         values.put(MyHelper.AccountColumns.password,Accountdata.password);
-        Log.d("oooo", "oooo");
+        //Log.d("oooo", "oooo");
 
         String target = getEmail();
         String search = MyHelper.AccountColumns.mailAddress + " = ?";
