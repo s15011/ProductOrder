@@ -11,7 +11,7 @@
     tools:context="jp.techinstitute.s15011.productorder.ProductView"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:descendantFocusability="blocksDescendants"
-    >
+    android:id="@+id/ProductView">
 
 
     <TextView
