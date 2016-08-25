@@ -15,17 +15,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!--<activity android:name=".CreateMenber"></activity>-->
-        <!--<activity android:name=".OrderCheck">
+
+        <activity android:name=".CreateMenber"></activity>
+        <activity android:name=".OrderCheck">
         </activity>
+        <activity android:name=".ChengeMenberInfo"></activity>
         <activity
             android:name=".Confirm_Activity"
             android:label="@string/app_name">
         </activity>
         <activity android:name=".OrderCancel">
-        </activity>-->
-        <activity android:name=".CreateMenber"></activity>
-        <activity android:name=".ChengeMenberInfo"></activity>
+        </activity>
     </application>
 
 </manifest>
