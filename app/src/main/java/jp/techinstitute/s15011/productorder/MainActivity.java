@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
 		list[3] = "";
 		list[4] = "";
 
-		String[] columns = {MyHelper.Columns.productName,MyHelper.Columns.PRICE,MyHelper.Columns.STOCK,MyHelper.Columns.productName  };
+		//String[] columns = {MyHelper.Columns.,MyHelper.Columns.PRICE,MyHelper.Columns.STOCK,MyHelper.Columns.productName  };
+		String[] ordername = {MyHelper.OrderBeforeColumns.itemName,MyHelper.OrderBeforeColumns.quantity,MyHelper.OrderBeforeColumns.price,MyHelper.OrderBeforeColumns.mailAddress};
 
 		//String[] columns = new String[]{"id","name" };
-		Cursor cursor = db.query(MyHelper.TABLE_NAME, columns, null, null, null, null, null);
+		Cursor cursor = db.query(MyHelper.ORDER_BEFORE_NAME, ordername, null, null, null, null, null);
 		StringBuilder text = new StringBuilder();
 		//Log.e("col :", String.valueOf(cursor.getColumnCount()));
 		while (cursor.moveToNext()) {
